@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-
+import Header from './components/Header';
+import ArticleList from './components/ArticleList';
+import Footer from './components/Footer';
 class App extends Component {
 
   state = {
@@ -8,22 +9,29 @@ class App extends Component {
     // url: "https://localhost:3001/articles"
 
   }
-  
+
   async componentDidMount() {
     const response = await fetch(`http://localhost:3001/articles`)
     const articles = await response.json();
     this.setState({ articles });
-  }catch (error) {
+  } catch(error) {
     console.log(error)
   }
-  
+
 
   render() {
     console.log(this.state.articles);
 
     return (
-      <div>Article App</div>
-    );  
+      <>
+        <Header />
+
+        <ArticleList />
+
+        <Footer />
+
+      </>
+    );
   }
 }
 
