@@ -16,3 +16,4 @@
 - Make sure your new article network request includes a `'Content-Type': 'application/json'` header.
 - You should not include `"id"` in the post body. The api will take care of auto-incrementing this for you.
 - You will need to utilize the json response on POST success, as it will provide the id for the new article you just added.
+# react-news-feed
