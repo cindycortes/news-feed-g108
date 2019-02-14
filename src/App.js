@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import ArticleList from './components/ArticleList';
+import AddArticle from './components/AddArticle';
 import Footer from './components/Footer';
 class App extends Component {
 
@@ -17,7 +18,14 @@ class App extends Component {
   } catch(error) {
     console.log(error)
   }
-
+  
+  // addArticleToList = newArticle => {
+  //   this.setState(prevState => {
+  //     return {
+  //       AddedArticles : [...prevState.articles, newArticle]
+  //     }
+  //   })
+  // }
 
   render() {
     console.log(this.state.articles);
@@ -26,7 +34,9 @@ class App extends Component {
       <>
         <Header />
 
-        <ArticleList />
+        <ArticleList articles={this.state.articles}/>
+
+        {/* <AddArticle articles={this.state.articles} addArticleToList={this.addArticleToList} /> */}
 
         <Footer />
 
