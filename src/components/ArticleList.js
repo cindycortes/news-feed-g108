@@ -5,14 +5,14 @@ class ArticleList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            articleTitle: '',
-            articleImg: ''
+            articleTitle: props.articleTitle,
+            articleImg: props.articleImg
         }
     }
-    
+
     handleSubmit = (e) => {
         e.preventDefault()
-        const data = this.state 
+        const data = this.state
         console.log(data)
     }
 
@@ -27,32 +27,32 @@ class ArticleList extends Component {
 
     render() {
         // console.log(this.props.articles);
-        const {articleTitle, articleImg} = this.state
-        const {articles} = this.props
+        const { articleTitle, articleImg } = this.state
+        const { articles } = this.props
 
-        let articleList = articles.map(article => {
-            return (
-                <Article key={article.id} article={article} />
-            )
+        console.log(articles);
+        const articleList = articles.map(article => {
+            return <Article key={article.id} article={article} />
         })
+
 
         return (
             <>
-                <h4>ArticleList</h4>
-                <Article />
+                {articleList}
+
                 <p>Article Title is : {articleTitle} </p>
                 <p>Article Img is : {articleImg} </p>
 
-                {articleList} 
 
-                <div className="container-fluid">
+                <div className="container">
 
-                    <h1>Add An Article</h1>
-                    <form onSubmit={this.handleSubmit}>
+                    <h1 className="article">Add An Article</h1>
+                    <form onSubmit={this.handleSubmit.bind(this)}>
                         <div className="formgroup">
                             <label>Article Title</label>
-                            <input type="text" name="articleTitle" className="form-control" onChange={this.handleInputChange} ></input>
+                            <input type="text" name="articleTitle" className="form-control" onChange={this.handleInputChange} placeholder="Article Title" ></input>
                         </div>
+
                         <div className="formgroup">
                             <label>Image</label>
                             <input type="text" name="articleImg" className="form-control" onChange={this.handleInputChange} placeholder="Img Link..."></input>

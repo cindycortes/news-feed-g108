@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+    color: white;
+
+}
+.article {
+    margin: 5px;
+}
+/* .container {
+    display: flex;
+    flex-direction: column;
+} */
