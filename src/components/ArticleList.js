@@ -8,20 +8,22 @@ class ArticleList extends Component {
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        
         const newArticle = {
             
             title: this.state.title,
             img: this.state.img
         }
-        this.props.addArticle(newArticle)
+        this.props.addArticle(newArticle);
     }
 
     handleInputChange = (e) => {
-        e.preventDefault()
-        // console.log(e.target.value);
+        const { name, value } = e.target;
         this.setState({
-            [e.target.name]: e.target.value
+            [name]: value
+            
+
         })
     }
 

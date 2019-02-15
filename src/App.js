@@ -11,26 +11,26 @@ class App extends Component {
     articles: []
   }
 
-  // componentDidMount = async () => {
-  //   try {
-  //     const res = await fetch(`http://localhost:3001/articles`);
-  //     const json = await res.json();
-  //     this.setState({
-  //       articles: json.map(article => {
-  //         return {
-  //           ...article
-  //         }
-  //       })
-  //     })
-  //   } catch (e) {
-  //     alert(e);
-  //   }
-  // }
-
-  componentDidMount() {
-    Axios.get(`http://localhost:3001/articles`)
-      .then(response => this.setState({ articles: response.data }))
+  componentDidMount = async () => {
+    try {
+      const res = await fetch(`http://localhost:3001/articles`);
+      const json = await res.json();
+      this.setState({
+        articles: json.map(article => {
+          return {
+            ...article
+          }
+        })
+      })
+    } catch (e) {
+      alert(e);
+    }
   }
+
+  // componentDidMount() {
+  //   Axios.get(`http://localhost:3001/articles`)
+  //     .then(response => this.setState({ articles: response.data }))
+  // }
 
   addArticle = newArticle => {
     const { title, img } = newArticle;
@@ -45,8 +45,8 @@ class App extends Component {
       .then(json => {
         this.setState(prevState => {
           return {
-            article: [
-              ...prevState.article,
+            articles: [
+              ...prevState.articles,
               {
                 title,
                 img
@@ -67,7 +67,7 @@ class App extends Component {
       <div className="container">
         <Header />
 
-        <ArticleList articles={this.state.articles} />
+        <ArticleList articles={this.state.articles} addArticle={this.addArticle}/>
 
         <Footer />
 
